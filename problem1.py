@@ -48,6 +48,9 @@ def split_data(df: pd.DataFrame, training_fractor: float = 0.7, validation_fract
         # and ensuring that with every split, the same rows are selected for the same set 
         # example-->if row 40 in X is selected for the training set, it will also be selected for the training set in Y
     # stratify=y-->ensures that the proportion of classes is the same in all splits
+                #  it is used for classification problems
+                #  it is not used for regression problems
+                #  it ensures that your training, validation, and test sets all have the exact same percentage of "g" and "h" as the original complete dataset.
     X_training, X_temp, y_training, y_temp = train_test_split(X, y, train_size=training_fractor, stratify=y)
     # split the remaining data evenly into validation and test sets
     X_validation, X_testing, y_validation, y_testing = train_test_split(X_temp, y_temp, train_size=validation_fractor / (validation_fractor + testing_fractor), stratify=y_temp)
